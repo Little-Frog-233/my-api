@@ -16,5 +16,5 @@ bash ./jobs/startFlaskDEBUG.sh
 ```
 docker build -t flask-api .
 
-docker run -d --name flask-api-01 -p 8051:5000 -v ./docker-log/log01:/app/log -v /data/webData:/app/data flask-api
+docker run -d --name flask-api-01 -p 8051:5000 -v /log/log01:/app/log -v /data/webData:/app/data flask-api
 ```

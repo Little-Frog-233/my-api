@@ -45,36 +45,22 @@ redis_config = {
 }
 cache = Cache(app, config=redis_config, with_jinja2_ext=False)
 
-
 ######################Origin验证###############################
-@app.before_request
-def checkOrigin():
-    try:
-        origin = request.headers.get("Origin", None)
-        if origin is None:
-            raise ("Origin can not be None")
-    except:
-        if not request.referrer:
-            abort(404)
-        origin = request.referrer.replace('http://',
-                                          '').replace('https://',
-                                                      '').split('/')[0]
-    urls = ['127.0.0.1:8080']
-    if not any([i in origin for i in urls]):
-        abort(404)
-
-
-########################启用跨域###########################
-@app.after_request
-def cors(environ):
-    origin = '*'
-    environ.headers['Access-Control-Allow-Origin'] = origin
-    environ.headers['Access-Control-Allow-Method'] = '*'
-    environ.headers[
-        'Access-Control-Allow-Methods'] = 'HEAD,OPTIONS,GET,POST,DELETE,PUT'
-    environ.headers[
-        'Access-Control-Allow-Headers'] = 'x-requested-with,content-type,accept-token,Accept-token,Content-Length,Authorization,Accept,X-CSRFToken,CSRFToken-Id'
-    return environ
+# @app.before_request
+# def checkOrigin():
+#     try:
+#         origin = request.headers.get("Origin", None)
+#         if origin is None:
+#             raise ("Origin can not be None")
+#     except:
+#         if not request.referrer:
+#             abort(404)
+#         origin = request.referrer.replace('http://',
+#                                           '').replace('https://',
+#                                                       '').split('/')[0]
+#     urls = ['127.0.0.1:8080']
+#     if not any([i in origin for i in urls]):
+#         abort(404)
 
 
 ########################启用跨域###########################

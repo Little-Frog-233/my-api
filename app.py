@@ -79,7 +79,7 @@ def cors(environ):
 ########################限制器###########################
 limiter = Limiter(app=app,
                   key_func=get_remote_address,
-                  default_limits=["60/minute"])
+                  default_limits=["20/minute"])
 
 
 @limiter.request_filter

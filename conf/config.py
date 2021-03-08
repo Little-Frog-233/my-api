@@ -35,6 +35,7 @@ class Config:
         self.g_errorlog = cfp.get('gunicorn', 'errorlog')
 
         self.grpc_sentiment = cfp.get('grpc', 'sentiment')
+        self.grpc_spider = cfp.get('grpc', 'spider')
 
 
 if __name__ == '__main__':

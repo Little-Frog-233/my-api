@@ -9,7 +9,7 @@ from flask_restful import reqparse, abort
 from app import cache
 from Logger import log
 from utils.nlp.sentiment.index import getSentiment
-from utils.other.token import checkTokenWrap, desToken
+from utils.other.token import checkTokenWrap
 
 
 class Sentiment(Resource):

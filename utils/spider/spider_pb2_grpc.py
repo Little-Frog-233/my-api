@@ -18,11 +18,22 @@ class SpiderStub(object):
             request_serializer=spider__pb2.Data.SerializeToString,
             response_deserializer=spider__pb2.Results.FromString,
         )
+        self.Kuaishou = channel.unary_unary(
+            '/spider.Spider/Kuaishou',
+            request_serializer=spider__pb2.Data.SerializeToString,
+            response_deserializer=spider__pb2.Results.FromString,
+        )
 
 
 class SpiderServicer(object):
     """Missing associated documentation comment in .proto file."""
     def Zhihu(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def Kuaishou(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -34,6 +45,12 @@ def add_SpiderServicer_to_server(servicer, server):
         'Zhihu':
         grpc.unary_unary_rpc_method_handler(
             servicer.Zhihu,
+            request_deserializer=spider__pb2.Data.FromString,
+            response_serializer=spider__pb2.Results.SerializeToString,
+        ),
+        'Kuaishou':
+        grpc.unary_unary_rpc_method_handler(
+            servicer.Kuaishou,
             request_deserializer=spider__pb2.Data.FromString,
             response_serializer=spider__pb2.Results.SerializeToString,
         ),
@@ -59,6 +76,23 @@ class Spider(object):
               metadata=None):
         return grpc.experimental.unary_unary(
             request, target, '/spider.Spider/Zhihu',
+            spider__pb2.Data.SerializeToString, spider__pb2.Results.FromString,
+            options, channel_credentials, insecure, call_credentials,
+            compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def Kuaishou(request,
+                 target,
+                 options=(),
+                 channel_credentials=None,
+                 call_credentials=None,
+                 insecure=False,
+                 compression=None,
+                 wait_for_ready=None,
+                 timeout=None,
+                 metadata=None):
+        return grpc.experimental.unary_unary(
+            request, target, '/spider.Spider/Kuaishou',
             spider__pb2.Data.SerializeToString, spider__pb2.Results.FromString,
             options, channel_credentials, insecure, call_credentials,
             compression, wait_for_ready, timeout, metadata)

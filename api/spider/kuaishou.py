@@ -13,7 +13,7 @@ from utils.other.token import checkTokenWrap
 
 
 class KuaishouVideo(Resource):
-    # @checkTokenWrap(cache=cache, request=request)
+    @checkTokenWrap(cache=cache, request=request)
     def post(self):
         try:
             parser = reqparse.RequestParser()
@@ -40,7 +40,7 @@ class KuaishouVideo(Resource):
 
 
 class KuaishouComment(Resource):
-    # @checkTokenWrap(cache=cache, request=request)
+    @checkTokenWrap(cache=cache, request=request)
     def post(self):
         try:
             parser = reqparse.RequestParser()
@@ -67,7 +67,7 @@ class KuaishouComment(Resource):
 
 
 class KuaishouSearch(Resource):
-    # @checkTokenWrap(cache=cache, request=request)
+    @checkTokenWrap(cache=cache, request=request)
     def post(self):
         try:
             parser = reqparse.RequestParser()
